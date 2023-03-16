@@ -9,19 +9,15 @@ class DummyCrawler(Crawler):
     def get_entries(self):
         entries = []
 
-        entries.append(Entry(
-            title='Breaking News',
-            order='2',
-            comments='10',
-            points='100'
-        ))
+        entries.append(
+            Entry(title="Breaking News", order="2", comments="10", points="100")
+        )
 
-        entries.append(Entry(
-            title='Even more Breaking News',
-            order='1',
-            comments='23',
-            points='200'
-        ))
+        entries.append(
+            Entry(
+                title="Even more Breaking News", order="1", comments="23", points="200"
+            )
+        )
 
         return entries
 
@@ -45,26 +41,20 @@ class DummyRepository(Repository):
 
 def test_crawl():
     dummy_repository = DummyRepository()
-    entry_crawling = EntryCrawling(crawler=DummyCrawler(), repository=dummy_repository)   
+    entry_crawling = EntryCrawling(crawler=DummyCrawler(), repository=dummy_repository)
     entry_crawling.crawl()
 
-    assert dummy_repository.entries == [Entry(
-            title='Breaking News',
-            order='2',
-            comments='10',
-            points='100'
-        ),
-        Entry(
-            title='Even more Breaking News',
-            order='1',
-            comments='23',
-            points='200'
-        )
+    assert dummy_repository.entries == [
+        Entry(title="Breaking News", order="2", comments="10", points="100"),
+        Entry(title="Even more Breaking News", order="1", comments="23", points="200"),
     ]
+
 
 def test_crawl_with_empty_crawler():
     dummy_repository = DummyRepository()
-    entry_crawling = EntryCrawling(crawler=DummyEmptyCrawler(), repository=dummy_repository)   
+    entry_crawling = EntryCrawling(
+        crawler=DummyEmptyCrawler(), repository=dummy_repository
+    )
     entry_crawling.crawl()
 
     assert dummy_repository.entries == []

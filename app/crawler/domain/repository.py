@@ -8,7 +8,6 @@ class Repository:
 
         raise NotImplementedError
 
-
     def get_entries(self):
         """Retrieves entries."""
 

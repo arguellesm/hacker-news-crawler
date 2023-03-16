@@ -20,24 +20,15 @@ def dummy_filter_function(entry):
 
 
 def test_filters_entries():
-
     dummy_entries = [
-        Entry(
-            title='Breaking News',
-            order='2',
-            comments='10',
-            points='100'
-        ),
-        Entry(
-            title='Even more Breaking News',
-            order='1',
-            comments='23',
-            points='200'
-        )
+        Entry(title="Breaking News", order="2", comments="10", points="100"),
+        Entry(title="Even more Breaking News", order="1", comments="23", points="200"),
     ]
 
     dummy_repository = DummyRepository()
     dummy_repository.save_entries(dummy_entries)
 
-    entry_filtering = EntryFiltering(filter_functions=[dummy_filter_function], repository=dummy_repository)
+    entry_filtering = EntryFiltering(
+        filter_functions=[dummy_filter_function], repository=dummy_repository
+    )
     assert entry_filtering.filter() == [entry.to_dict() for entry in dummy_entries]

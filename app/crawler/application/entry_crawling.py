@@ -13,10 +13,8 @@ class EntryCrawling:
         self.crawler = crawler
         self.repository = repository
 
-    
     def crawl(self):
         """Crawls entries."""
-        
+
         entries = self.crawler.get_entries()
         self.repository.save_entries(entries)
-        

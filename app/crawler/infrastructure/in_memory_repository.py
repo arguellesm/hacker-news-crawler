@@ -12,13 +12,11 @@ class InMemoryRepository(Repository):
         """Inits InMemoryRepository with a list."""
         self.entries = []
 
-
     def save_entries(self, entries):
         """Saves entry list."""
-        print('pre save')
+        print("pre save")
         self.entries = entries
-        print('post save')
-
+        print("post save")
 
     def get_entries(self):
         """Returns entry list."""
