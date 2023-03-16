@@ -34,8 +34,11 @@ class Entry:
             raise TypeError('Points must be an integer.')
         
 
-
     def to_dict(self):
         """Returns a dictionary with the Entry information."""
 
         return {key: value for key, value in self.__dict__.items()}
+
+    
+    def __eq__(self, other):
+        return self.title == other.title and self.order == other.order and self.comments == other.comments and self.points == other.points
