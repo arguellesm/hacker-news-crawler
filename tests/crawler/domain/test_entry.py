@@ -1,6 +1,7 @@
 from app.crawler.domain.entry import Entry
 import pytest
 
+
 def test_cant_create_titleless_entry():
     config = {
         'title': '',
