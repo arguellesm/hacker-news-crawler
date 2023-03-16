@@ -30,4 +30,4 @@ class EntryFiltering():
         entries = self.repository.get_entries()
         if filter_type is None:
             return[entry.to_dict() for entry in entries]
-        return [entry.to_dit() for entry in self.filters[filter_type].apply(entries)]
+        return [entry.to_dict() for entry in self.filters[filter_type].apply(entries)]
