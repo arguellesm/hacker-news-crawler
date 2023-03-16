@@ -29,3 +29,13 @@ def filter_less_than_or_five():
 
     res =  entry_filtering.filter('less_than_or_five_words')
     return json.dumps(res, indent=4, ensure_ascii=False)
+
+
+@api.errorhandler(404)
+def page_not_found(e):
+    return json.dumps({'Status' : 'The requested URL was not found on the server.'}), 404
+
+
+@api.errorhandler(500)
+def page_not_found(e):
+    return json.dumps({'Status' : 'Internal server error'}), 500
