@@ -18,7 +18,6 @@ class EntryFiltering:
             else:
                 self.filters[f.__name__] = Filter(f)
 
-
     def filter(self, filter_type=None):
         """Apply a given filter.
 

@@ -10,7 +10,10 @@ from app.crawler.infrastructure.filter_functions import (
 
 crawler_hacker_news = CrawlerHackerNews()
 in_memory_repository = InMemoryRepository()
-filter_functions = [ (more_than_five_words, 'comments'), (less_than_or_five_words, 'points')]
+filter_functions = [
+    (more_than_five_words, "comments"),
+    (less_than_or_five_words, "points"),
+]
 
 entry_crawling = EntryCrawling(crawler_hacker_news, in_memory_repository)
 entry_filtering = EntryFiltering(filter_functions, in_memory_repository)

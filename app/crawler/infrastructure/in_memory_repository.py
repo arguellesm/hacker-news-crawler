@@ -14,9 +14,7 @@ class InMemoryRepository(Repository):
 
     def save_entries(self, entries):
         """Saves entry list."""
-        print("pre save")
         self.entries = entries
-        print("post save")
 
     def get_entries(self):
         """Returns entry list."""
