@@ -1,20 +1,31 @@
-from flask import Flask, jsonify
+from app.crawler import entry_crawling, entry_filtering
+from flask import Flask
+import json
 import requests
 
 
-app = Flask(__name__)
+api = Flask(__name__)
 
 
-@app.route('/crawl', methods = ['POST'])
+@api.route('/crawl', methods = ['POST'])
 def index():
-    return jsonify({'ok': 200})
+    """Crawls entries."""
+
+    entry_crawling.crawl()
+    return json.dumps({'Status': 'OK'})
     
 
-@app.route('/filter/more_than_five', methods = ['GET'])
+@api.route('/filter/more_than_five', methods = ['GET'])
 def filter_more_than_five():
-    return jsonify({'ok': 200})
+    """Applies filter to crawled entries."""
+
+    res = entry_filtering.filter('more_than_five_words')
+    return json.dumps(res, indent=4, ensure_ascii=False)
 
 
-@app.route('/filter/less_than_or_five', methods = ['GET'])
+@api.route('/filter/less_than_or_five', methods = ['GET'])
 def filter_less_than_or_five():
-    return jsonify({'ok': 200})
+    """Applies filter to crawled entries."""
+
+    res =  entry_filtering.filter('less_than_or_five_words')
+    return json.dumps(res, indent=4, ensure_ascii=False)
